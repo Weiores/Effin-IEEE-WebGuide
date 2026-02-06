@@ -36,7 +36,7 @@ const CONFIG = {
         FALLBACK_TO_BROWSER_TTS: false,
         ELEVENLABS: {
             API_KEY: decodeKey([
-                '5c957185e0818d7367ea9370e26de6d258910a2fbbc3bc17_ks'
+                '30ba3c92b771aa25c185d785c169499648c1fb0fd61fb94c_ks'
             ]),
             API_URL: 'https://api.elevenlabs.io/v1/text-to-speech',
             VOICE_ID: '21m00Tcm4TlvDq8ikWAM',
