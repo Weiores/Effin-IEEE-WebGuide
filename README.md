@@ -61,3 +61,10 @@ Click anywhere to dismiss the highlight.
 - **Microphone**: Required for voice commands when `VOICE_INPUT` is enabled
 - **Audio output**: Required for voice responses when `VOICE_OUTPUT` is enabled
 
+# Contributors
+---
+> Team Effin @ iNTUition v12.0
+- [See Wijie](https://www.linkedin.com/in/see-wi-jie-759952299/)
+- [Yeo Wei Xuan](https://www.linkedin.com/in/wei-xuan-yeo-890218379/)
+- [Chan Teik Fei](https://www.linkedin.com/in/chan-teik-fei/)
+- Keith Seah Ken Yi
