@@ -1,8 +1,9 @@
 # Web Guide Chrome Extension: Technical Report
 
-**Project:** Web Guide - Accessibility-Focused Web Navigator
-**Author:** Manus AI
-**Date:** February 05, 2026
+**Project:** Web Guide - AI Web Guidance
+**Author:** Team Effin
+**Contributors**: See Wijie, Yeo Wei Xuan, Chan Teik Fei, Keith Seah Ken Yi
+**Date:** February 06, 2026
 
 ---
 
