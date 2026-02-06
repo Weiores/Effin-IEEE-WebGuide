@@ -21,7 +21,7 @@ The Web Guide extension is built on a standard, event-driven Chrome extension ar
 | **Popup Script** (`popup.js`) | JavaScript | Manages the user interface, handles voice input (SpeechRecognition) and output (SpeechSynthesis), and orchestrates API calls. |
 | **Content Script** (`content.js`) | JavaScript | Injected into web pages to extract content, analyze the DOM, and render visual guidance (highlights and arrows). |
 | **Background Script** (`background.js`) | JavaScript | A service worker that manages the extension's lifecycle, settings storage, and future features like context menus. |
-| **Gemini API** | Google AI | Provides the core intelligence for page summarization, natural language understanding of voice commands, and identifying target elements. |
+| **Groq API** | Llama | Provides the core intelligence for page summarization, natural language understanding of voice commands, and identifying target elements. |
 
 ### Architectural Diagram
 
@@ -41,7 +41,7 @@ graph TD
     end
 
     subgraph External Services
-        F[Google Gemini API];
+        F[Groq API];
     end
 
     B -- 1. Get Page Content --> C;
@@ -63,18 +63,13 @@ The extension is designed for straightforward local deployment using Chrome's de
 
 1.  **Obtain Source Code**: The complete source code is provided in the `web-guide-extension.zip` archive.
 
-2.  **Configure API Key**: Before loading, the Gemini API key must be set. 
-    > **Important Note**: The API key is stored in plain text within `config.js`. This is suitable for demonstration purposes only. For production, a secure backend proxy should be used to protect the key.
-    -   Open `web-guide-extension/config.js`.
-    -   Replace the placeholder `'your-api-key-here'` with a valid Gemini API key.
-
-3.  **Load the Extension in Chrome**:
+2.  **Load the Extension in Chrome**:
     -   Open the Chrome browser and navigate to `chrome://extensions`.
     -   Enable **Developer mode** using the toggle in the top-right corner.
     -   Click the **"Load unpacked"** button.
     -   Select the entire `web-guide-extension` directory.
 
-4.  **Verify Installation**: The Web Guide icon (a compass symbol) will appear in the Chrome toolbar. It is recommended to "pin" the extension for easy access.
+3.  **Verify Installation**: The Web Guide icon (a compass symbol) will appear in the Chrome toolbar. It is recommended to "pin" the extension for easy access.
 
 ## 4. Code Walkthrough
 
@@ -90,29 +85,14 @@ The manifest file defines the extension's capabilities and permissions. Key conf
 -   **`"content_scripts"`**: Defines that `config.js` and `content.js` are injected into pages at `document_idle`, ensuring the page is mostly loaded before the script runs.
 -   **`"background": {"service_worker": "background.js"}`**: Registers the background service worker for lifecycle management.
 
-### `config.js` - Centralized Configuration
-
-To simplify management, all critical variables are stored in a single `config.js` file. This includes the Gemini API key and URL, feature flags, and voice/UI settings. This approach allows for quick adjustments without digging into the application logic.
-
-```javascript
-const CONFIG = {
-    GEMINI_API_KEY: 'AIzaSy...', // API Key
-    FEATURES: {
-        VOICE_INPUT: true,      // Enable/disable speech-to-text
-        VOICE_OUTPUT: true,     // Enable/disable text-to-speech
-    },
-    // ... other settings
-};
-```
-
 ### `popup.js` - The Control Center
 
 This script is the brain of the operation. It handles user interactions from the popup and orchestrates the workflow.
 
 -   **Voice I/O**: It utilizes the Web Speech API, with `webkitSpeechRecognition` for voice input and `speechSynthesis` for spoken responses.
 -   **Command Processing**: The `processCommand` function is the entry point for all actions. It first messages the content script to get structured data from the current page. 
--   **Gemini API Integration**: The `buildPrompt` function is particularly noteworthy. It constructs a detailed prompt for the Gemini API, providing rich context about the current page (URL, title, text summary, interactive elements). This contextual prompting is crucial for receiving accurate and relevant responses. The `callGeminiAPI` function then makes the `fetch` request.
--   **Response Handling**: After receiving a response from Gemini, `handleGeminiResponse` parses the text. It uses a regular expression (`/\[HIGHLIGHT_ELEMENT\](.*?)\[\/HIGHLIGHT_ELEMENT\]/s`) to extract a JSON object containing a CSS selector for the element that needs to be highlighted. This data is then passed to the content script.
+-   **Groq API Integration**: The `buildPrompt` function is particularly noteworthy. It constructs a detailed prompt for the Groq API, providing rich context about the current page (URL, title, text summary, interactive elements). This contextual prompting is crucial for receiving accurate and relevant responses. The `callGroqAPI` function then makes the `fetch` request.
+-   **Response Handling**: After receiving a response from Groq, `handleGroqResponse` parses the text. It uses a regular expression (`/\[HIGHLIGHT_ELEMENT\](.*?)\[\/HIGHLIGHT_ELEMENT\]/s`) to extract a JSON object containing a CSS selector for the element that needs to be highlighted. This data is then passed to the content script.
 
 ### `content.js` - The On-Page Worker
 
@@ -134,7 +114,7 @@ The background service worker handles tasks that are not tied to a specific page
 
 The most significant point of attention for a senior engineer is the handling of the API key. As implemented, the key is exposed on the client-side. **This is not secure for a production environment.** For a real-world deployment, the following change is recommended:
 
-> Create a simple backend proxy (e.g., using Cloudflare Workers or a small Node.js server) that receives requests from the extension, attaches the API key securely on the server-side, and forwards the request to the Gemini API. The extension would call this proxy instead of the Gemini API directly.
+> Create a simple backend proxy (e.g., using Cloudflare Workers or a small Node.js server) that receives requests from the extension, attaches the API key securely on the server-side, and forwards the request to the Groq API. The extension would call this proxy instead of the Groq API directly.
 
 ### Extensibility and Maintainability
 
@@ -150,9 +130,6 @@ The extension itself is built with accessibility in mind. The popup UI uses ARIA
 ## 6. Conclusion
 
 The Web Guide extension is a functional prototype that successfully demonstrates the concept of an AI-powered accessibility guide for the web. The architecture is sound for its purpose, and the code is organized for future development.
-
-The immediate next step before any wider deployment should be to address the API key security issue by implementing a backend proxy. Following that, the feature-first design provides a solid foundation for adding more advanced guidance features, such as multi-step animated paths or form-filling assistance.
-
 ---
 
 ### References
