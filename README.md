@@ -1,14 +1,14 @@
 # Web Guide - Chrome Extension
+![unnamed](https://github.com/user-attachments/assets/3b2bfc91-c5bc-4876-843a-36448ab1d902)
 
 > Your virtual tour guide for the web. Making the internet accessible for everyone.
-
-<img width="358" height="599" alt="Screenshot 2026-02-06 085627" src="https://github.com/user-attachments/assets/d7f2b874-7475-45ed-af54-148162df71b8" />
 
 ## Overview
 
 Web Guide is a Chrome extension that acts as a **virtual tour guide** for any webpage. It helps users understand where they are, what the page is for, and guides them to their next action—solving accessibility challenges for people who struggle with understanding pages and navigating to the right place.
 
 ### Key Features
+<img width="1080" height="356" alt="image" src="https://github.com/user-attachments/assets/7a3f1547-4b33-4b62-8b4f-5eefd09da7e1" />
 
 - **Page Summarization**: Explains the current page in simple, clear language
 - **Next Action Guidance**: Suggests what users can do and highlights the recommended element
@@ -20,6 +20,7 @@ Web Guide is a Chrome extension that acts as a **virtual tour guide** for any we
 ## Quick Start
 
 ### Installation (Developer Mode)
+<img width="1125" height="375" alt="image" src="https://github.com/user-attachments/assets/9b4bd59f-9220-4ced-82eb-a318e3e02ed7" />
 
 A chrome extension that uses AI to guide user through voice mode and visual cues
 - Step 1: Download the zip file 
@@ -44,14 +45,17 @@ A chrome extension that uses AI to guide user through voice mode and visual cues
 
 ### Visual Guidance
 
+<img width="1080" height="438" alt="image" src="https://github.com/user-attachments/assets/acc33d20-4c64-459e-acd6-25708eea821e" />
+
 When the extension identifies a relevant element:
 1. The page scrolls to bring the element into view
 2. An animated arrow points to the element
 3. A tooltip describes what the element is
 4. A pulsing highlight draws attention
-<img width="1918" height="1031" alt="Screenshot 2026-02-06 090252" src="https://github.com/user-attachments/assets/8f56b672-13b2-4e18-addb-bd0143e63906" />
 
 Click anywhere to dismiss the highlight.
+
+<img width="1918" height="1031" alt="Screenshot 2026-02-06 090252" src="https://github.com/user-attachments/assets/8f56b672-13b2-4e18-addb-bd0143e63906" />
 
 ## Requirements
 
