@@ -1,16 +1,5 @@
 /**
  * Web Guide Extension - Configuration File
- * 
- * INSTRUCTIONS:
- * 1. Add your API keys below
- * 2. To change keys, simply edit this file
- * 3. Reload the extension in chrome://extensions after changes
- * 
- * SECURITY NOTE:
- * This file contains sensitive API keys. In production:
- * - Never commit this file to public repositories
- * - Consider using Chrome's storage.sync API for user-specific keys
- * - Use a backend proxy to hide API keys from client-side code
  */
 
 const decodeKey = (parts) => parts.map((part) => part.split('').reverse().join('')).join('');
@@ -24,7 +13,7 @@ const CONFIG = {
     GROQ_MODEL: 'llama-3.1-8b-instant',
     
     
-    // Feature Flags (easily toggle features on/off)
+    // Feature Flags
     FEATURES: {
         VOICE_INPUT: true,      // Speech-to-text for user commands
         VOICE_OUTPUT: true,     // Text-to-speech for responses
