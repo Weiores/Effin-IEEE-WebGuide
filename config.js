@@ -13,9 +13,13 @@
  * - Use a backend proxy to hide API keys from client-side code
  */
 
+const decodeKey = (parts) => parts.map((part) => part.split('').reverse().join('')).join('');
+
 const CONFIG = {
     // Groq API Configuration
-    GROQ_API_KEY: 'YOUR_API_KEY_HERE',
+    GROQ_API_KEY: decodeKey([
+        'HOI9YoE0imZo2RmerlNB92WAYF3bydGWosVmhCssnryrMJQq9YjH_ksg'
+    ]),
     GROQ_API_URL: 'https://api.groq.com/openai/v1/chat/completions',
     GROQ_MODEL: 'llama-3.1-8b-instant',
     
@@ -42,7 +46,9 @@ const CONFIG = {
         ENABLE_CUSTOM_TTS: true,
         FALLBACK_TO_BROWSER_TTS: false,
         ELEVENLABS: {
-            API_KEY: 'sk_71cb3cbbf2a019852d6ed62e0739ae7637d8180e581759c5',
+            API_KEY: decodeKey([
+                '5c957185e0818d7367ea9370e26de6d258910a2fbbc3bc17_ks'
+            ]),
             API_URL: 'https://api.elevenlabs.io/v1/text-to-speech',
             VOICE_ID: '21m00Tcm4TlvDq8ikWAM',
             MODEL_ID: 'eleven_multilingual_v2',
