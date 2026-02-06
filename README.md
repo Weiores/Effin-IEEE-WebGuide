@@ -58,9 +58,6 @@ Click anywhere to dismiss the highlight.
 - **Browser**: Chrome or Edge with Manifest V3 support
 - **Permissions**: `activeTab`, `scripting`, `storage`, and `<all_urls>` host access (see `manifest.json`)
 - **Network**: Outbound HTTPS access to Groq and ElevenLabs APIs (or a backend proxy)
-- **API Keys**:
-	- Groq API key configured in `config.js` (or proxy configuration in `config1.js`)
-	- ElevenLabs API key if `CUSTOM_TTS_OUTPUT` is enabled
 - **Microphone**: Required for voice commands when `VOICE_INPUT` is enabled
 - **Audio output**: Required for voice responses when `VOICE_OUTPUT` is enabled
 
