@@ -7,7 +7,7 @@ const decodeKey = (parts) => parts.map((part) => part.split('').reverse().join('
 const CONFIG = {
     // Groq API Configuration
     GROQ_API_KEY: decodeKey([
-        'HOI9YoE0imZo2RmerlNB92WAYF3bydGWosVmhCssnryrMJQq9YjH_ksg'
+        'GROQ_API_KEY_REVERSE'
     ]),
     GROQ_API_URL: 'https://api.groq.com/openai/v1/chat/completions',
     GROQ_MODEL: 'llama-3.1-8b-instant',
@@ -36,7 +36,7 @@ const CONFIG = {
         FALLBACK_TO_BROWSER_TTS: false,
         ELEVENLABS: {
             API_KEY: decodeKey([
-                '30ba3c92b771aa25c185d785c169499648c1fb0fd61fb94c_ks'
+                'LABS_API_KEY_REVERSE'
             ]),
             API_URL: 'https://api.elevenlabs.io/v1/text-to-speech',
             VOICE_ID: '21m00Tcm4TlvDq8ikWAM',
